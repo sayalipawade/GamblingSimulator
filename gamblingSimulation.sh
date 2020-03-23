@@ -1,7 +1,8 @@
 #!/bin/bash -x
 echo "Welcome" 
 
-#variables
-stake=100
-bet=1
+#constants
+STAKE=100
+BET=1
+
 
