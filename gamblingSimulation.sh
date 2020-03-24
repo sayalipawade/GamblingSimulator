@@ -27,12 +27,12 @@ do
 	while [[ $cash -gt $LOWER_LIMIT && $cash -lt $UPPER_LIMIT ]]
 	do
    	temp=$((RANDOM%2))
-   	if [ $temp -eq 1 ]
-   	then
+		if [ $temp -eq 1 ]
+		then
 			cash=$((cash+BET))
 			totalWinningCash=$((totalWinningCash+BET))
 		else
-      	cash=$((cash-BET))
+			cash=$((cash-BET))
 			totalLoosingCash=$((totalLoosingCash+BET))
 		fi
 	done
