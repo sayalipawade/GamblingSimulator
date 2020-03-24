@@ -21,6 +21,8 @@ total_won=0
 total_lost=0
 
 #Finding the days won and lost and by how much
+declare -A total_won_Amount
+declare -A total_lost_Amount
 for(( days=1;days<=20;days++))
 do
 	cash=$STAKE
@@ -36,22 +38,31 @@ do
 			totalLoosingCash=$((totalLoosingCash+BET))
 		fi
 	done
-	total_won=$((total_won+$totalWinningCash))
-	total_lost=$((total_lost+$totalLoosingCash))
-	if [[ $total_won -gt $total_lost ]]
+total_won_Amount[$days]=$totalWinningCash
+total_lost_Amount[$days]=$totalLoosingCash
+done
+echo "${total_won_Amount[@]}"
+echo "${total_lost_Amount[@]}"
+
+#Finding the luckiest day
+max=${total_won_Amount[1]}
+for (( i=1;i<=${#total_won_Amount[@]};i++ ))
+do
+	if [[ ${total_won_Amount[$i]} -gt $max ]]
 	then
-		total_Amount1=$((total_won-total_lost))
-		((win++))
-	else
-		total_Amount1=$((total_lost-total_won))
-		((loose++))
+			max=${total_won_Amount[$i]}
+			lucky_day=$i
 	fi
 done
-echo "Winning days:$win"
-echo "Loosing days:$loose"
-echo "Total amount:$total_Amount1"
-	 
 
-
-
+#Finding the unluckiest day
+max=${total_lost_Amount[1]}
+for (( i=1;i<=${#total_lost_Amount[@]};i++ ))
+do
+   if [[ ${total_lost_Amount[$i]} -gt $max ]]
+   then
+         max=${total_lost_Amount[$i]}
+         unlucky_day=$i
+   fi
+done
 
