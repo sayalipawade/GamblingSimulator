@@ -66,3 +66,14 @@ do
    fi
 done
 
+#finding out gambler playing for next month or stop gambling
+total_won=$((total_won+$totalWinningCash))
+total_lost=$((total_lost+$totalLoosingCash))
+if [[ $total_won -gt $total_lost ]]
+then
+	total_Amount1=$((total_won-total_lost))
+	echo "Gambler playing for next month"
+else
+	total_Amount1=$((total_lost-total_won))
+	echo "Stop gambling"
+fi
