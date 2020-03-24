@@ -13,6 +13,8 @@ cash=$STAKE
 temp=0
 every_day_cash=0
 monthly_cash=0
+totalWinningCash=0
+totalLoosingCash=0
 
 #calculating gamblers total amount after 20 days
 for(( days=1;days<=20;days++))
@@ -22,7 +24,7 @@ do
    	temp=$((RANDOM%2))
    	if [ $temp -eq 1 ]
    	then
-      	cash=$((cash+BET))
+			cash=$((cash+BET))
 			totalWinningCash=$((totalWinningCash+BET))
    	else
       	cash=$((cash-BET))
@@ -33,7 +35,8 @@ done
 echo $cash
 echo "Total Winning Amount:$totalWinningCash"
 echo "Total Lost Amount:$totalLoosingCash"
-	
+
+
 
 
 
